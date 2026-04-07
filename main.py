@@ -970,10 +970,10 @@ class EnhancedMovieRecommenderApp:
         st.markdown("### Dataset Overview")
         col1, col2, col3, col4 = st.columns(4)
         metrics = [
-            ("??", "Movies", self.dataset_stats['total_movies'], "#4f46e5"),
-            ("??", "Users", self.dataset_stats['total_users'], "#7c3aed"),
-            ("?", "Ratings", self.dataset_stats['total_ratings'], "#ec4899"),
-            ("??", "Avg Rating", f"{self.dataset_stats['avg_rating']:.2f}", "#10b981")
+            ("Movies", self.dataset_stats['total_movies'], "#4f46e5"),
+            ("Users", self.dataset_stats['total_users'], "#7c3aed"),
+            ("Ratings", self.dataset_stats['total_ratings'], "#ec4899"),
+            ("Avg Rating", f"{self.dataset_stats['avg_rating']:.2f}", "#10b981")
         ]
         for i, (icon, label, value, color) in enumerate(metrics):
             with [col1, col2, col3, col4][i]:
@@ -1012,12 +1012,12 @@ class EnhancedMovieRecommenderApp:
         with col2:
             status = "Premium" if st.session_state.user_eligible else "Basic"
             status_class = "status-premium" if st.session_state.user_eligible else "status-basic"
-            st.markdown(f'<div class="{status_class} status-indicator">?? {status} Account</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="{status_class} status-indicator"> {status} Account</div>', unsafe_allow_html=True)
         with col3:
             if st.button("Logout", type="secondary", key="logout_btn"):
                 self._handle_logout()
         self._display_user_statistics()
-        tab1, tab2, tab3 = st.tabs(["?? Recommendations", "?? Algorithm Analysis", "?? Feedback"])
+        tab1, tab2, tab3 = st.tabs(["Recommendations", "Algorithm Analysis", "Feedback"])
         with tab1:
             self._display_recommendations_tab()
         with tab2:
@@ -1038,11 +1038,11 @@ class EnhancedMovieRecommenderApp:
         st.markdown("### Your Viewing Profile")
         col1, col2, col3, col4, col5 = st.columns(5)
         metrics = [
-            ("??", "Movies Rated", len(user_ratings), "#4f46e5"),
-            ("?", "Avg Rating", f"{avg_rating:.1f}", "#7c3aed"),
-            ("??", "Favorites", favorite_movies, "#ec4899"),
-            ("??", "Diversity", f"{rating_range:.1f}", "#10b981"),
-            ("??", "Consistency", f"{consistency:.1f}" if consistency != float('inf') else "inf", "#f59e0b")
+            ("Movies Rated", len(user_ratings), "#4f46e5"),
+            ("Avg Rating", f"{avg_rating:.1f}", "#7c3aed"),
+            ("Favorites", favorite_movies, "#ec4899"),
+            ("Diversity", f"{rating_range:.1f}", "#10b981"),
+            ("Consistency", f"{consistency:.1f}" if consistency != float('inf') else "inf", "#f59e0b")
         ]
         for i, (icon, label, value, color) in enumerate(metrics):
             with [col1, col2, col3, col4, col5][i]:
@@ -1061,7 +1061,6 @@ class EnhancedMovieRecommenderApp:
             {
                 'name': 'content',
                 'title': 'Content-Based',
-                'icon': '??',
                 'description': 'Analyzes movie features to find similar titles based on your preferences',
                 'features': ['Works for new users', 'Explainable results', 'Discovers similar genres', 'No cold start problem'],
                 'enabled': True,
@@ -1071,7 +1070,6 @@ class EnhancedMovieRecommenderApp:
             {
                 'name': 'collaborative',
                 'title': 'Collaborative Filtering',
-                'icon': '??',
                 'description': 'Uses community wisdom from users with similar viewing tastes',
                 'features': ['Discovers unexpected gems', 'High accuracy', 'Community-driven', 'Finds popular trends'],
                 'enabled': st.session_state.user_eligible,
@@ -1081,7 +1079,6 @@ class EnhancedMovieRecommenderApp:
             {
                 'name': 'hybrid',
                 'title': 'Hybrid Intelligence',
-                'icon': '??',
                 'description': 'Combines multiple approaches for optimal recommendation quality',
                 'features': ['Highest accuracy', 'Best coverage', 'Adaptive learning', 'Personalized weighting'],
                 'enabled': st.session_state.user_eligible,
@@ -1305,7 +1302,6 @@ class EnhancedMovieRecommenderApp:
         <div style="width:120px; height:180px; background: var(--accent-gradient); 
                     display: flex; align-items: center; justify-content: center; 
                     border-radius: 12px; color: white; font-size: 2rem; font-weight: bold;">
-            ??
         </div>
         """, unsafe_allow_html=True)
 
